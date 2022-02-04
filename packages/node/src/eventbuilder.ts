@@ -92,7 +92,7 @@ export function eventFromUnknownInput(exception: unknown, hint?: EventHint): Eve
  */
 export function eventFromMessage(
   message: string,
-  level: Severity = Severity.Info,
+  level: Severity = 'info' as Severity,
   hint?: EventHint,
   attachStacktrace?: boolean,
 ): Event {

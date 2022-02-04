@@ -98,7 +98,7 @@ function _installGlobalOnErrorHandler(): void {
               column,
             );
 
-      event.level = Severity.Error;
+      event.level = 'error' as Severity;
 
       addMechanismAndCapture(hub, error, event, 'onerror');
     },
@@ -144,7 +144,7 @@ function _installGlobalOnUnhandledRejectionHandler(): void {
         ? _eventFromRejectionWithPrimitive(error)
         : eventFromUnknownInput(error, undefined, attachStacktrace, true);
 
-      event.level = Severity.Error;
+      event.level = 'error' as Severity;
 
       addMechanismAndCapture(hub, error, event, 'onunhandledrejection');
       return;

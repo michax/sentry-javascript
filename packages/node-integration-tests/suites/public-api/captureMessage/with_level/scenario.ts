@@ -5,10 +5,10 @@ Sentry.init({
   release: '1.0',
 });
 
-Sentry.captureMessage('debug_message', Sentry.Severity.Debug);
-Sentry.captureMessage('info_message', Sentry.Severity.Info);
-Sentry.captureMessage('warning_message', Sentry.Severity.Warning);
-Sentry.captureMessage('error_message', Sentry.Severity.Error);
-Sentry.captureMessage('fatal_message', Sentry.Severity.Fatal);
-Sentry.captureMessage('critical_message', Sentry.Severity.Critical);
-Sentry.captureMessage('log_message', Sentry.Severity.Log);
+Sentry.captureMessage('debug_message', 'debug' as Sentry.Severity);
+Sentry.captureMessage('info_message', 'info' as Sentry.Severity);
+Sentry.captureMessage('warning_message', 'warning' as Sentry.Severity);
+Sentry.captureMessage('error_message', 'error' as Sentry.Severity);
+Sentry.captureMessage('fatal_message', 'fatal' as Sentry.Severity);
+Sentry.captureMessage('critical_message', 'critical' as Sentry.Severity);
+Sentry.captureMessage('log_message', 'log' as Sentry.Severity);
