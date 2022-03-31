@@ -31,6 +31,8 @@ export const insertAt = (arr, index, ...insertees) => {
   return newArr;
 };
 
+const nodeResolvePlugin = resolve();
+
 /**
  * Create a plugin to add an identification banner to the top of stand-alone bundles.
  *
@@ -127,8 +129,6 @@ export function makeBaseBundleConfig(options) {
       },
     }),
   );
-
-  const nodeResolvePlugin = resolve();
 
   const markAsBrowserBuildPlugin = replace({
     // don't replace `__placeholder__` where it's followed immediately by a single `=` (to prevent ending up
