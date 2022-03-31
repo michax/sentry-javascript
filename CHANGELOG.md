@@ -9,7 +9,7 @@
 - feat(react): Add React 18 as peer dep (#4819)
 - ref(build): Add `build/types` to tarballs and adjust `types` entry points (#4824)
 
-Work in this release contributed by @Turbo87. Thank you for your contribution!
+Work in this release contributed by @MikevPeeren. Thank you for your contribution!
 
 ## 6.19.3
 
