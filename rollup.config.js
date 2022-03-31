@@ -1,5 +1,15 @@
 /**
  * Code for generating config used by individual packages' Rollup configs
+ *
+ * Rollup config docs: https://rollupjs.org/guide/en/#big-list-of-options
+ *
+ * License plugin docs: https://github.com/mjeanroy/rollup-plugin-license
+ * Replace plugin docs: https://github.com/rollup/plugins/tree/master/packages/replace
+ * Resolve plugin docs: https://github.com/rollup/plugins/tree/master/packages/node-resolve
+ * Terser plugin docs: https://github.com/TrySound/rollup-plugin-terser#options
+ * Terser docs: https://github.com/terser/terser#api-reference
+ * Typescript plugin docs: https://github.com/ezolenko/rollup-plugin-typescript2
+ *
  */
 
 import assert from 'assert';
