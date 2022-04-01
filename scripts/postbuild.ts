@@ -33,12 +33,16 @@ ASSETS.forEach(asset => {
 // TODO remove in v7! Until then:
 // copy CDN bundles into npm dir to temporarily keep bundles in npm tarball
 // inside the tarball, they are located in `build/`
-const npmTmpBundlesPath = path.resolve(NPM_BUILD_DIR, 'build');
-const cdnBundlesPaht = path.resolve('build', 'bundles');
-if (!fs.existsSync(npmTmpBundlesPath)) {
-  fs.mkdirSync(npmTmpBundlesPath);
+// for now, copy it by default, unless explicitly forbidden via an command line arg
+const tmpCopyBundles = !process.argv.includes('-skipBundleCopy');
+if (tmpCopyBundles) {
+  const npmTmpBundlesPath = path.resolve(NPM_BUILD_DIR, 'build');
+  const cdnBundlesPaht = path.resolve('build', 'bundles');
+  if (!fs.existsSync(npmTmpBundlesPath)) {
+    fs.mkdirSync(npmTmpBundlesPath);
+  }
+  fse.copy(cdnBundlesPaht, npmTmpBundlesPath);
 }
-fse.copy(cdnBundlesPaht, npmTmpBundlesPath);
 // end remove
 
 // package.json modifications
