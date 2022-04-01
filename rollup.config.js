@@ -286,6 +286,7 @@ export function makeBundleConfigVariants(baseConfig) {
 
 export function makeBaseNPMConfig(options = {}) {
   const { entrypoint, esModuleInterop } = options;
+
   const sucrasePlugin = sucrase({
     transforms: ['typescript'],
   });
