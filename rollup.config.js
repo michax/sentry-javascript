@@ -5,6 +5,7 @@
  * Rollup config docs: https://rollupjs.org/guide/en/#big-list-of-options
  *
  * License plugin docs: https://github.com/mjeanroy/rollup-plugin-license
+ * Regex Replace plugin docs: https://github.com/jetiny/rollup-plugin-re
  * Replace plugin docs: https://github.com/rollup/plugins/tree/master/packages/replace
  * Resolve plugin docs: https://github.com/rollup/plugins/tree/master/packages/node-resolve
  * Sucrase plugin docs: https://github.com/rollup/plugins/tree/master/packages/sucrase
@@ -21,6 +22,7 @@ import * as path from 'path';
 import deepMerge from 'deepmerge';
 import license from 'rollup-plugin-license';
 import resolve from '@rollup/plugin-node-resolve';
+import regexReplace from 'rollup-plugin-re';
 import replace from '@rollup/plugin-replace';
 import sucrase from '@rollup/plugin-sucrase';
 import { terser } from 'rollup-plugin-terser';
@@ -287,6 +289,16 @@ export function makeBaseNPMConfig(options = {}) {
   const sucrasePlugin = sucrase({
     transforms: ['typescript'],
   });
+
+  const constToVarPlugin = regexReplace({
+    patterns: [
+      {
+        test: 'const ',
+        replace: 'var ',
+      },
+    ],
+  });
+
   return {
     input: entrypoint || 'src/index.ts',
     output: {
@@ -316,7 +328,7 @@ export function makeBaseNPMConfig(options = {}) {
       // `esModule` -> don't emit helpers
       interop: esModuleInterop ? 'auto' : 'esModule',
     },
-    plugins: [nodeResolvePlugin, sucrasePlugin],
+    plugins: [nodeResolvePlugin, sucrasePlugin, constToVarPlugin],
     // don't include imported modules from outside the package in the final output
     external: [
       ...builtinModules,
